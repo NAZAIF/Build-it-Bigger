@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.jokeandroidlib.JokeActivity;
 import com.example.jokejavalib.JokeProvider;
 
+import static com.example.jokeandroidlib.JokeActivity.INTENT_CONSTANT;
+
 
 public class MainActivity extends AppCompatActivity implements EndpointsAsynctask.EndpointsTaskListener {
 
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsynctas
     public void onComplete(String joke) {
         progressBar.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra("gceResult", joke);
+        intent.putExtra(INTENT_CONSTANT, joke);
         startActivity(intent);
 
     }

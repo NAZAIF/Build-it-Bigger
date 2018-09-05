@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.app.Application;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ApplicationTestCase;
+import android.util.Log;
 
 import com.example.jokejavalib.JokeProvider;
 
@@ -28,8 +29,9 @@ public class EndpointsAsynctaskTest extends ApplicationTestCase<Application> {
             joke = task.get();
         } catch (Exception e) {
             e.printStackTrace();
+            Log.i("In AsyncTest", "Task failed");
         }
 
-        assertNotNull(joke);
+        assertEquals(JokeProvider.getJokes(),joke);
     }
 }
