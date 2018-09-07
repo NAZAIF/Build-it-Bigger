@@ -3,9 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.app.Application;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ApplicationTestCase;
-import android.util.Log;
 
-import com.example.jokejavalib.JokeProvider;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class EndpointsAsynctaskTest extends ApplicationTestCase<Application> {
 
-    private String joke;
+    private String joke = null;
 
     public EndpointsAsynctaskTest() {
         super(Application.class);
@@ -29,9 +27,9 @@ public class EndpointsAsynctaskTest extends ApplicationTestCase<Application> {
             joke = task.get();
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i("In AsyncTest", "Task failed");
+            joke = null;
         }
 
-        assertEquals(JokeProvider.getJokes(),joke);
+        assertNotNull(joke);
     }
 }
